@@ -1,0 +1,954 @@
+<!doctype html>
+<html lang="en" data-bg="bolt">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Guessing where your customers come from? Track it with Google Analytics</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:wght@400;500;600;700&display=swap">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <main class="deck" id="deck">
+    <div class="stage" id="stage">
+
+      <!-- 1 -->
+      <section class="slide layout-title" id="s-1" data-id="1">
+        <div class="title-wrap">
+          <p class="eyebrow">CUSTOMER WORKSHOP · THU, NOV 5</p>
+          <h1 class="display">Guessing where your customers come from?<br><span class="ac">Track it with Google Analytics</span></h1>
+          <p class="subtitle">Count bookings and sign-ups on your Bolt.new site, then see which posts and ads bring them in.</p>
+        </div>
+        <p class="slide-footer">Blake Arnsdorff · CX Enablement Lead, Bolt.new</p>
+        <aside class="notes"><p>Welcome. One hour, hands-on. By the end, your site counts bookings and sign-ups, and you know the five numbers to check each week.</p></aside>
+      </section>
+
+      <!-- 2 -->
+      <section class="slide layout-two-shots" id="s-2" data-id="2">
+        <header class="slide-head">
+          <p class="eyebrow">WHY WE'RE HERE</p>
+          <h2 class="title">The door counter and <span class="ac">the receipt printer</span></h2>
+          <p class="lead">Bolt.new's analytics is the door counter at a shop. It counts everyone who walks in, with nothing to install and no way to dodge it. GA4 is the receipt printer: it tells you who bought what, and which flyer brought them in. A good shop wants both.</p>
+        </header>
+        <div class="slide-body shots-2">
+          <figure class="shot-fig">
+            <div class="shot-cell"><div class="shot crop" style="--cx:0.5875;--cy:0.4803;--cw:0.3775;--ch:0.15;--arn:3.8817"><img src="screenshots/S6-07a-bolt-hosting-analytics.png" alt="Bolt.new hosting analytics dashboard"></div></div>
+            <figcaption><strong>Bolt.new:</strong> counts every visit from the server, with no setup. Is my site getting traffic? Where from? Is anything broken?</figcaption>
+          </figure>
+          <figure class="shot-fig">
+            <div class="shot-cell"><div class="shot crop" style="--cx:0.594;--cy:0.5914;--cw:0.376;--ch:0.26;--arn:2.2306"><img src="screenshots/S6-07b-ga4-realtime-same-time.png" alt="GA4 Realtime report at the same moment"></div></div>
+            <figcaption><strong>GA4:</strong> runs in your visitor's browser. What did people do? Who booked? Which post brought them?</figcaption>
+          </figure>
+        </div>
+        <aside class="notes">
+          <p>if asked why Bolt.new's numbers look different:</p>
+          <ul>
+            <li>Only shows "/": Bolt.new sites load once and switch pages instantly in the browser. That's why they feel fast. The server sees the arrival; GA4 sees the moves after that.</li>
+            <li>Counts /vite.svg and /robots.txt: it reports every file the server delivers, including the site icon and the file search engines check first.</li>
+            <li>Higher numbers than GA4: it counts every visit, including ad blockers, privacy browsers and bots. GA4 only sees browsers that run its tag.</li>
+            <li>No bookings or sign-ups: it's built for traffic, not actions. That's the gap GA4 fills.</li>
+            <li>Give Bolt.new credit: bandwidth and the "Top resources not found (404)" card catch broken links.</li>
+          </ul>
+        </aside>
+      </section>
+
+      <!-- 3 -->
+      <section class="slide layout-cards" id="s-3" data-id="3">
+        <header class="slide-head">
+          <p class="eyebrow">TODAY</p>
+          <h2 class="title">What we'll <span class="ac">build together</span></h2>
+        </header>
+        <div class="slide-body layout-cards">
+          <div class="cards-3 tall equal">
+            <div class="card"><h3><span class="num">01</span>CONNECT</h3><p>GA4 on your Bolt.new site. One prompt installs it. No code.</p></div>
+            <div class="card"><h3><span class="num">02</span>COUNT</h3><p>Bookings and sign-ups as key events. GA4's name for the actions that bring you customers.</p></div>
+            <div class="card"><h3><span class="num">03</span>CREDIT</h3><p>Tagged links and five weekly numbers. See which posts and ads lead to bookings.</p></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 4 -->
+      <section class="slide" id="s-4" data-id="4">
+        <header class="slide-head">
+          <p class="eyebrow">OUR DEMO SITE</p>
+          <h2 class="title">Meet <span class="ac">Fresh Start Home Cleaning</span></h2>
+          <p class="lead">A fictional cleaning company built with one Bolt.new prompt. It has a booking form and a newsletter sign-up: the two actions we'll track.</p>
+        </header>
+        <div class="slide-body overlap">
+          <div class="overlap-box">
+            <div class="shot desk"><img src="screenshots/S2-03-home-page-full-width.png" alt="Fresh Start Home Cleaning home page on desktop" loading="lazy"></div>
+            <div class="shot phone crop" style="--cx:0.392;--cy:0.1958;--cw:0.2165;--ch:0.7263;--arn:0.4598"><img src="screenshots/S2-08b-mobile-book-page.png" alt="Fresh Start booking page in Bolt.new's iPhone preview" loading="lazy"></div>
+          </div>
+        </div>
+        <p class="callout">Your site works too, as long as it has a booking, contact or sign-up form.</p>
+        <aside class="notes"><p>Prompt 1 built it in Plan mode with the Max model. Long prompts land better that way: review the plan, then build.</p></aside>
+      </section>
+
+      <!-- 4b -->
+      <section class="slide layout-prompt starter" id="s-4b" data-id="4b">
+        <span class="ref-tag">Optional</span>
+        <header class="slide-head">
+          <p class="eyebrow">NO SITE YET?</p>
+          <h2 class="title">Build your own <span class="ac">Fresh Start</span></h2>
+          <p class="lead">No site with a form? Paste this into Bolt.new to build your own copy of the demo site, then follow along.</p>
+        </header>
+        <div class="slide-body prompt-full">
+            <div class="prompt">
+              <button class="copy-btn" type="button">Copy</button>
+<pre><code>Build a simple, mobile-friendly website for a fictional home cleaning company called "Fresh Start Home Cleaning."
+
+Use React Router so each page has its own URL, and give each page its own browser tab title (for example, "Book a cleaning | Fresh Start Home Cleaning"):
+- Home (/): hero section, short intro, "Book a cleaning" button, three customer testimonials
+- Services (/services): four services with starting prices: Standard Clean, Deep Clean, Move-In/Move-Out Clean, and Recurring Weekly Clean
+- Book (/book): booking form
+- About (/about): short story about the business
+- Thank you (/thank-you): confirmation page
+
+Booking form (id="booking-form"): name, email, phone, ZIP code, service (dropdown of the four services), number of bedrooms, preferred date, and a "Book my cleaning" button. All fields required. On successful submit, go to /thank-you.
+
+Newsletter sign-up form (id="newsletter-form") in the footer on every page: one email field and a "Get cleaning tips" button. On submit, show an inline "Thanks for signing up!" message.
+
+Show a small notice above both forms: "Demo site: please use made-up details." Don't save or send form data anywhere.
+
+Include a header with navigation links to every page and a "Book a cleaning" button. Don't add any analytics or tracking code yet.</code></pre>
+            </div>
+        </div>
+        <p class="tip-strip">Use Plan mode with the Max model: review the plan, then build.</p>
+        <aside class="notes"><p>Skip this slide live if everyone has a site. It's here for anyone who wants to build along today.</p></aside>
+      </section>
+
+      <!-- 5 -->
+      <section class="slide" id="s-5" data-id="5">
+        <header class="slide-head">
+          <p class="eyebrow">WORDS YOU'LL SEE</p>
+          <h2 class="title">Six terms, <span class="ac">in plain English</span></h2>
+        </header>
+        <dl class="slide-body deflist">
+          <dt>Account:</dt><dd>the folder that holds your GA4 properties. Usually your business name.</dd>
+          <dt>Property:</dt><dd>where your reports live. One per website.</dd>
+          <dt>Data stream:</dt><dd>the connection between your website and the property.</dd>
+          <dt>Measurement ID:</dt><dd>the code starting with G- that tells your site where to send data.</dd>
+          <dt>Key event:</dt><dd>an action that brings you a customer, like a booking. GA4's word for a conversion.</dd>
+          <dt>Tagged link:</dt><dd>a normal link with labels on the end that tell GA4 where the visitor came from.</dd>
+        </dl>
+      </section>
+
+      <!-- 6 -->
+      <section class="slide dense" id="s-6" data-id="6">
+        <header class="slide-head">
+          <p class="eyebrow">SET UP GA4 · 1 OF 7</p>
+          <h2 class="title">Create your <span class="ac">account and property</span></h2>
+        </header>
+        <div class="slide-body shots-table">
+          <div class="shots-stack">
+            <div class="shot-cell"><div class="shot crop" style="--cx:0.1215;--cy:0.3547;--cw:0.3785;--ch:0.155;--arn:3.7665"><img src="screenshots/S1-01-account-creation-v2.png" alt="GA4 Account creation screen" loading="lazy">
+              <span class="hl" style="--x:12.6;--y:40.7;--w:28.3;--h:8.8"></span></div></div>
+            <div class="shot-cell"><div class="shot crop" style="--cx:0.321;--cy:0.3547;--cw:0.358;--ch:0.31;--arn:1.7812"><img src="screenshots/S1-02-property-details.png" alt="GA4 Property details with time zone and currency" loading="lazy">
+              <span class="hl" style="--x:33.1;--y:49.7;--w:23.9;--h:11.4"></span></div></div>
+          </div>
+          <div class="col">
+        <div class="dtable compact">
+          <table>
+            <thead><tr><th>Setting</th><th>What to choose</th><th>Why it matters</th><th>Change later?</th></tr></thead>
+            <tbody>
+              <tr><td>Account name</td><td>Your business name</td><td>You'll see it on every screen</td><td>Yes, <strong>Admin → Account settings</strong></td></tr>
+              <tr><td>Data sharing</td><td>Leave the defaults</td><td>Doesn't change your reports</td><td>Yes, <strong>Admin → Account settings</strong></td></tr>
+              <tr><td>Property name</td><td>Your site or business name</td><td>It's where your reports live</td><td>Yes, <strong>Admin → Property details</strong></td></tr>
+              <tr><td>Time zone</td><td>Where your business operates</td><td>Decides when a "day" starts, so weekly numbers line up with your week</td><td>Yes; applies going forward</td></tr>
+              <tr><td>Currency</td><td>Your currency</td><td>Used for any money values later</td><td>Yes; applies going forward</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="callout">Go to analytics.google.com. First time? Click <strong>Start measuring</strong>, and you'll begin at <strong>Account creation</strong>. Already have an account? <strong>Admin</strong> (gear, bottom left) → <strong>Create</strong> → <strong>Property</strong>.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- 7 -->
+      <section class="slide" id="s-7" data-id="7">
+        <header class="slide-head">
+          <p class="eyebrow">SET UP GA4 · 2 OF 7</p>
+          <h2 class="title">Pick the <span class="ac">closest industry</span></h2>
+        </header>
+        <div class="slide-body shot-cards">
+          <div class="shot-cell"><div class="shot crop" style="--cx:0.3275;--cy:0.4356;--cw:0.1775;--ch:0.2429;--arn:1.1271"><img src="screenshots/S1-03-business-details-v2.png" alt="GA4 Business details with Industry category set to Home &amp; Garden" loading="lazy">
+              <span class="hl" style="--x:33.1;--y:45.3;--w:9.4;--h:4.5"></span></div></div>
+          <div class="cards-col">
+            <div class="card"><h3><span class="num">01</span>There's no "Services"</h3><p>Pick the closest match. Home services → Home &amp; Garden.</p></div>
+            <div class="card"><h3><span class="num">02</span>It's only for benchmarks</h3><p>Industry and size don't change what GA4 tracks.</p></div>
+            <div class="card"><h3><span class="num">03</span>Change it anytime</h3><p><strong>Admin → Property details</strong>.</p></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 8 -->
+      <section class="slide dense" id="s-8" data-id="8">
+        <header class="slide-head">
+          <p class="eyebrow">SET UP GA4 · 3 OF 7</p>
+          <h2 class="title">Pick <span class="ac">two objectives</span></h2>
+        </header>
+        <div class="slide-body shot-cards">
+          <div class="shot-cell"><div class="shot crop" style="--cx:0.33;--cy:0.345;--cw:0.34;--ch:0.32;--arn:1.6388"><img src="screenshots/S1-04-business-objectives.png" alt="GA4 business objectives with Generate leads and Understand web and/or app traffic checked" loading="lazy">
+              <span class="hl" style="--x:34.9;--y:37.2;--w:30.2;--h:8.5"></span>
+              <span class="hl" style="--x:34.9;--y:56.4;--w:30.2;--h:8.5"></span></div></div>
+          <div class="cards-col">
+            <div class="card"><h3><span class="num">01</span>Service business</h3><p><strong>Generate leads</strong> + <strong>Understand web and/or app traffic</strong>.</p></div>
+            <div class="card"><h3><span class="num">02</span>Online store with checkout on your site</h3><p><strong>Drive sales</strong> + <strong>Understand traffic</strong>.</p></div>
+            <div class="card"><h3><span class="num">03</span>What it changes</h3><p>Only which reports show first in the menu. GA4 collects the same data either way. Add reports later in <strong>Reports → Library</strong>.</p></div>
+          </div>
+        </div>
+        <div class="row-2">
+          <p class="strip strip-bold">Which action makes you money, and do you want to know where visitors come from?</p>
+          <div class="watch"><h3 class="box-title">Watch out for:</h3><p>Checking all five. Google recommends one or two.</p></div>
+        </div>
+      </section>
+
+      <!-- 9 -->
+      <section class="slide" id="s-9" data-id="9">
+        <span class="ref-tag">Reference</span>
+        <header class="slide-head">
+          <p class="eyebrow">SET UP GA4 · 4 OF 7</p>
+          <h2 class="title">Accept the terms, <span class="ac">then choose Web</span></h2>
+        </header>
+        <div class="slide-body shots-wide">
+          <div class="shot-cell"><div class="shot crop" style="--cx:0.3225;--cy:0.6477;--cw:0.355;--ch:0.131;--arn:4.1798"><img src="screenshots/S1-04b-terms-of-service.png" alt="GA4 Terms of Service with the Data Processing Terms checkbox" loading="lazy">
+              <span class="hl" style="--x:32.9;--y:67.2;--w:31.6;--h:3.7"></span></div></div>
+          <div class="shot-cell"><div class="shot crop" style="--cx:0.1225;--cy:0.3624;--cw:0.755;--ch:0.1311;--arn:8.8827"><img src="screenshots/S1-05-data-collection-web.png" alt="GA4 Start collecting data with the Web button" loading="lazy">
+              <span class="hl" style="--x:13.5;--y:42.3;--w:24;--h:4"></span></div></div>
+        </div>
+        <p class="slide-caption">Accept both the Terms and the Data Processing Terms (required to use GA4). Bolt.new projects are websites, so choose <strong>Web</strong>.</p>
+      </section>
+
+      <!-- 10 -->
+      <section class="slide" id="s-10" data-id="10">
+        <header class="slide-head">
+          <p class="eyebrow">SET UP GA4 · 5 OF 7</p>
+          <h2 class="title">Set up your <span class="ac">data stream</span></h2>
+        </header>
+        <div class="slide-body shot-top">
+          <div class="shot-cell"><div class="shot crop" style="--cx:0.201;--cy:0.0432;--cw:0.799;--ch:0.33;--arn:3.7345"><img src="screenshots/S1-06-stream-setup-v2.png" alt="GA4 Set up data stream with Website URL and Stream name" loading="lazy">
+              <span class="hl" style="--x:29.75;--y:19.7;--w:33.65;--h:6.4"></span>
+              <span class="hl" style="--x:65.6;--y:19.7;--w:24.65;--h:6.4"></span></div></div>
+          <div class="cards-row">
+            <div class="card"><h3><span class="num">01</span>Website URL</h3><p>Your published Bolt.new address. It's a label; tracking runs on the Measurement ID. Edit it later with the pencil icon. Find it in <strong>Bolt.new → Publish</strong> → copy the address.</p></div>
+            <div class="card"><h3><span class="num">02</span>Stream name</h3><p>Anything you'll recognize, like "My website."</p></div>
+            <div class="card"><h3><span class="num">03</span>Enhanced measurement</h3><p>Leave it on. It tracks page views, scrolls, outbound clicks, site search, videos and downloads with no code.</p></div>
+          </div>
+        </div>
+        <p class="callout">Before clicking <strong>Create &amp; continue</strong>, click the gear icon. Next slide.</p>
+      </section>
+
+      <!-- 11 -->
+      <section class="slide" id="s-11" data-id="11">
+        <header class="slide-head">
+          <p class="eyebrow">SET UP GA4 · 6 OF 7</p>
+          <h2 class="title">Two settings that matter <span class="ac">for Bolt.new sites</span></h2>
+        </header>
+        <div class="slide-body shot-cards portrait">
+          <div class="shot-cell"><div class="shot crop" style="--cx:0.6;--cy:0.2;--cw:0.4;--ch:0.45;--arn:1.371"><img src="screenshots/S1-07-08-enhanced-measurement-settings.png" alt="GA4 Enhanced measurement panel" loading="lazy">
+              <span class="hl" style="--x:64.5;--y:25.12;--w:21;--h:2.81"></span>
+              <span class="hl" style="--x:95.6;--y:59.32;--w:3.64;--h:4.26"></span></div></div>
+          <div class="cards-col">
+            <div class="card"><h3><span class="num">01</span>Keep "Page changes based on browser history events" checked</h3><p>Bolt.new sites switch pages without reloading. This helps count each page.</p></div>
+            <div class="card"><h3><span class="num">02</span>Turn Form interactions off</h3><p>It guesses at activity on every form. We'll send one precise booking event instead, so leaving it on doubles up.</p></div>
+            <div class="card"><h3><span class="num">03</span>Save</h3><p>Then click <strong>Create &amp; continue</strong>.</p></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 12 -->
+      <section class="slide dense" id="s-12" data-id="12">
+        <header class="slide-head">
+          <p class="eyebrow">SET UP GA4 · 7 OF 7</p>
+          <h2 class="title">Copy your Measurement ID. <span class="ac">Skip the code.</span></h2>
+        </header>
+        <div class="slide-body shots-2">
+          <figure class="shot-fig">
+            <div class="shot-cell"><div class="shot crop" style="--cx:0.334;--cy:0.1388;--cw:0.546;--ch:0.3585;--arn:2.3491"><img src="screenshots/S1-08b-google-tag-install-code.png" alt="GA4 Installation instructions panel showing Google tag code" loading="lazy"></div></div>
+            <figcaption>GA4 shows code to paste. Close this panel; Bolt.new installs it for you in the next step.</figcaption>
+          </figure>
+          <figure class="shot-fig">
+            <div class="shot-cell"><div class="shot crop" style="--cx:0.635;--cy:0.212;--cw:0.279;--ch:0.1488;--arn:2.892"><img src="screenshots/S1-09-stream-details-measurement-id.png" alt="GA4 Web stream details with the Measurement ID and copy icon" loading="lazy">
+              <span class="hl" style="--x:77.75;--y:27.9;--w:11.75;--h:5.2"></span></div></div>
+            <figcaption>Your Measurement ID (G-…) lives here: <strong>Admin → Data streams</strong> → your stream, top right. Yours will be different.</figcaption>
+          </figure>
+        </div>
+        <div class="row-2">
+          <div class="watch"><h3 class="box-title">Watch out for:</h3><p>Retyping the ID. Use the copy icon; a typo sends data nowhere.</p></div>
+          <p class="callout">"Data collection isn't active" is normal until the tag is on your site.</p>
+        </div>
+        <aside class="notes"><p>Admin only appears after you finish the setup wizard (click Next).</p></aside>
+      </section>
+
+      <!-- 13 -->
+      <section class="slide" id="s-13" data-id="13">
+        <span class="ref-tag">Reference</span>
+        <header class="slide-head">
+          <p class="eyebrow">SET UP GA4 · EXTRA</p>
+          <h2 class="title">Leave Google signals <span class="ac">off</span></h2>
+        </header>
+        <div class="slide-body shot-top">
+          <div class="shot-cell"><div class="shot crop" style="--cx:0.216;--cy:0.1619;--cw:0.707;--ch:0.2406;--arn:4.5324"><img src="screenshots/S1-10-google-signals-off.png" alt="GA4 Google signals data collection with a Turn on button" loading="lazy"></div></div>
+          <div class="cards-row">
+            <div class="card"><h3><span class="num">01</span>What it is</h3><p>Adds demographics from visitors signed in to Google.</p></div>
+            <div class="card"><h3><span class="num">02</span>Why off</h3><p>With small-business traffic, GA4 hides numbers to protect privacy, and it adds privacy-notice duties.</p></div>
+            <div class="card"><h3><span class="num">03</span>Where</h3><p><strong>Admin → Data collection and modification → Data collection</strong>.</p></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 15c -->
+      <section class="slide" id="s-15c" data-id="15c">
+        <span class="ref-tag">Reference</span>
+        <header class="slide-head">
+          <p class="eyebrow">INSTALL · SAFETY NET</p>
+          <h2 class="title">Bookmark a version <span class="ac">before you prompt</span></h2>
+        </header>
+        <div class="slide-body shot-cards">
+          <div class="shot-cell"><div class="shot crop" style="--cx:0;--cy:0.0848;--cw:0.261;--ch:0.3932;--arn:1.0238"><img src="screenshots/SX-01-version-history.png" alt="Bolt.new version history with a bookmarked Build Start version" loading="lazy">
+              <span class="hl" style="--x:0.8;--y:22.8;--w:24.6;--h:5.4"></span></div></div>
+          <div class="cards-col">
+            <div class="card"><h3><span class="num">01</span>Open version history</h3><p>The clock icon at the top of Bolt.new.</p></div>
+            <div class="card"><h3><span class="num">02</span>Bookmark a good version</h3><p>Before any tracking prompt, click the bookmark icon next to your current version.</p></div>
+            <div class="card"><h3><span class="num">03</span>Roll back in one click</h3><p>If a prompt breaks something.</p></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 14 -->
+      <section class="slide layout-prompt" id="s-14" data-id="14">
+        <header class="slide-head">
+          <p class="eyebrow">INSTALL · PROMPT 1 OF 3</p>
+          <h2 class="title">One prompt <span class="ac">installs GA4</span></h2>
+        </header>
+        <div class="slide-body prompt-full">
+            <div class="prompt">
+              <button class="copy-btn" type="button">Copy</button>
+<pre><code>Add Google Analytics 4 to this site with Measurement ID <mark class="ph">G-XXXXXXXXXX</mark>:
+
+1. Put the Google tag (gtag.js) in the &lt;head&gt; of index.html so it loads on every page.
+2. Give every page its own browser tab title, and make the &lt;title&gt; in index.html match the home page's title.
+3. Check how this site's page links work. If the URLs use a # (like /#/book), send a GA4 page_view each time the visitor moves to a different page, with page_title, page_location (the full URL) and page_path (the part after the #). Send it after the new title is set, once per change. The Google tag already sends the first page view, so never send one on the first page load. If the URLs don't use a #, don't add any page view code.
+
+Don't change anything else. When you're done, tell me which files you changed and whether the site uses # URLs.</code></pre>
+            </div>
+            <p class="ph-note"><mark class="ph">G-XXXXXXXXXX</mark> → your Measurement ID (GA4 → <strong>Admin → Data streams</strong> → your stream, top right).</p>
+        </div>
+        <p class="tip-strip">Bookmark a version in Bolt.new before any tracking prompt, so rolling back is one click.</p>
+        <aside class="notes"><p>In the test build this took three prompts (install, # page views, a first-load fix). This version folds all three into one.</p></aside>
+      </section>
+
+      <!-- 14b -->
+      <section class="slide" id="s-14b" data-id="14b">
+        <header class="slide-head">
+          <p class="eyebrow">INSTALL · CHECK BOLT.NEW'S WORK</p>
+          <h2 class="title">Check what <span class="ac">Bolt.new did</span></h2>
+        </header>
+        <div class="slide-body pair-2">
+          <div class="checklist">
+            <h3 class="box-title">Make sure Bolt.new:</h3>
+            <ul class="checks">
+              <li>Its reply names the files it changed</li>
+              <li>Its reply mentions the Google tag and your exact G- ID</li>
+              <li>Its reply says whether your site uses # links</li>
+            </ul>
+          </div>
+          <div class="watch">
+            <h3 class="box-title">Watch out for:</h3>
+            <ul>
+              <li>The Google tag added twice: every visit counts double. Run the check-it prompt (Make Bolt.new show its work) to confirm it appears once.</li>
+              <li>Extra page view code on a site without #: every page counts double</li>
+              <li>Forgetting Update: nothing reaches the live site until you click <strong>Publish → Update</strong></li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- 15 -->
+      <section class="slide dense" id="s-15" data-id="15">
+        <header class="slide-head">
+          <p class="eyebrow">INSTALL · CHECK IT</p>
+          <h2 class="title">See yourself <span class="ac">in Realtime</span></h2>
+        </header>
+        <div class="slide-body shots-2">
+          <figure class="shot-fig">
+            <div class="shot-cell"><div class="shot crop" style="--cx:0.21;--cy:0.3315;--cw:0.375;--ch:0.2467;--arn:2.3446"><img src="screenshots/S4-03-realtime-first-visit.png" alt="GA4 Realtime showing one active user" loading="lazy"></div></div>
+            <figcaption>In Bolt.new, click <strong>Publish → Update</strong>, then open your bolt.host address in a new tab (not the preview). In GA4, open <strong>Reports → Realtime overview</strong>. Within about 30 seconds you appear as an active user.</figcaption>
+          </figure>
+          <figure class="shot-fig">
+            <div class="shot-cell"><div class="shot crop" style="--cx:0.4;--cy:0.1658;--cw:0.5675;--ch:0.3778;--arn:2.3169"><img src="screenshots/S4-04-realtime-page-titles-working.png" alt="GA4 Realtime Views by Page title card listing each page" loading="lazy">
+              <span class="hl" style="--x:59.4;--y:17.1;--w:18.1;--h:36.9"></span></div></div>
+            <figcaption>Click between pages. Each page title should appear.</figcaption>
+            <p class="shot-note">Home shows twice here because this test site's page title didn't match. Step 2 of the install prompt fixes that.</p>
+          </figure>
+        </div>
+        <div class="row-2">
+          <p class="callout">If your site uses # links, the # stays in the address. GA4 now counts the moves; your links don't change.</p>
+          <div class="watch"><h3 class="box-title">Watch out for:</h3><p>Testing in the Bolt.new preview (nothing shows) and ad blockers (they hide your own visits).</p></div>
+        </div>
+      </section>
+
+      <!-- 15b -->
+      <section class="slide" id="s-15b" data-id="15b">
+        <span class="ref-tag">Reference</span>
+        <header class="slide-head">
+          <p class="eyebrow">INSTALL · IF YOUR SITE USES #</p>
+          <h2 class="title">Why # links <span class="ac">needed extra help</span></h2>
+        </header>
+        <div class="slide-body shots-3">
+          <figure class="shot-fig">
+            <div class="shot-cell"><div class="shot crop" style="--cx:0;--cy:0;--cw:0.305;--ch:0.5198;--arn:0.905"><img src="screenshots/S4-04b-live-services-hash-url.png" alt="Live site on the /#/services page" loading="lazy"></div></div>
+            <figcaption>Moving to /#/services…</figcaption>
+          </figure>
+          <figure class="shot-fig">
+            <div class="shot-cell"><div class="shot crop" style="--cx:0.594;--cy:0.1658;--cw:0.181;--ch:0.3084;--arn:0.9052"><img src="screenshots/S4-04c-realtime-unchanged-after-clicks.png" alt="GA4 Realtime still showing only the home page" loading="lazy"></div></div>
+            <figcaption>…wasn't counted. Only the home page showed.</figcaption>
+          </figure>
+          <figure class="shot-fig">
+            <div class="shot-cell"><div class="shot crop" style="--cx:0.594;--cy:0.1712;--cw:0.181;--ch:0.3084;--arn:0.9052"><img src="screenshots/S4-04-realtime-page-titles-working.png" alt="GA4 Realtime listing every page title" loading="lazy"></div></div>
+            <figcaption>After the fix (now part of the install prompt), every page counts.</figcaption>
+            <p class="shot-note">Home shows twice here because this test site's page title didn't match. Step 2 of the install prompt fixes that.</p>
+          </figure>
+        </div>
+        <aside class="notes"><p>Bolt.new sometimes uses # links so pages open correctly when someone refreshes. The workshop install prompt handles both styles.</p></aside>
+      </section>
+
+
+      <!-- 16 -->
+      <section class="slide layout-shot-cards stack-shots" id="s-16" data-id="16">
+        <header class="slide-head">
+          <p class="eyebrow">KEY EVENTS</p>
+          <h2 class="title">Mark your key events <span class="ac">first</span></h2>
+          <p class="lead">Tell GA4 which actions count as conversions now, so it's ready by the time you test. It can take 10+ minutes to start.</p>
+        </header>
+        <div class="slide-body key-events-grid">
+          <div class="shots-stack">
+            <div class="shot-cell"><div class="shot crop" style="--cx:0.3275;--cy:0.1234;--cw:0.535;--ch:0.532;--arn:1.5511">
+              <img src="screenshots/S5-02-key-event-settings-correct.png" alt="GA4 Create an event panel with Mark as key event on, Don't set a default key event value selected, and Once per event selected" loading="lazy">
+              <span class="hl" style="--x:33.2;--y:13.4;--w:52.8;--h:5.6"></span>
+              <span class="hl" style="--x:34.4;--y:31.4;--w:50.4;--h:5.2"></span>
+              <span class="hl" style="--x:34.4;--y:52.7;--w:50.4;--h:5"></span>
+            </div></div>
+            <div class="shot-cell"><div class="shot crop" style="--cx:0.2275;--cy:0.416;--cw:0.36;--ch:0.254;--arn:2.1861">
+              <img src="screenshots/S5-03-key-events-list.png" alt="GA4 Events list with stars next to generate_lead and sign_up" loading="lazy">
+              <span class="hl" style="--x:23.6;--y:50;--w:12.8;--h:3.6"></span>
+              <span class="hl" style="--x:23.6;--y:63.4;--w:12.8;--h:3.6"></span>
+            </div></div>
+          </div>
+          <div class="steps-col">
+            <ol class="steps">
+              <li><strong>Admin → Data display → Events → Create event</strong></li>
+              <li>Name it exactly <code>generate_lead</code> (then repeat for <code>sign_up</code>)</li>
+              <li>Turn on <strong>Mark as key event</strong></li>
+              <li>Choose <strong>Don't set a default key event value</strong></li>
+              <li>Leave <strong>Counting method</strong> on <strong>Once per event</strong>.</li>
+              <li>Under <strong>Choose how to create an event</strong>, select <strong>Create with code → Create</strong></li>
+            </ol>
+            <p class="callout">close_convert_lead and qualify_lead appear on their own when you pick the <strong>Generate leads</strong> objective. They're for sales pipelines and never fire on a simple site. Leave them.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- 16b -->
+      <section class="slide" id="s-16b" data-id="16b">
+        <header class="slide-head">
+          <p class="eyebrow">KEY EVENTS · WATCH OUT</p>
+          <h2 class="title">Three GA4 <span class="ac">traps to avoid</span></h2>
+        </header>
+        <div class="slide-body watch-focus">
+          <h3 class="box-title">Watch out for:</h3>
+          <div class="watch-cards">
+            <div class="watch-card"><strong class="wc-lead">"Create without code" is pre-selected.</strong> <span>It builds a fake event from page views, so visits count as bookings. Select <b>Create with code</b>.</span></div>
+            <div class="watch-card"><strong class="wc-lead">GA4 pre-selects a $1 value on every new key event.</strong> <span>Bookings would report fake revenue. Choose <b>Don't set</b>, and check each event after saving: <b>⋮ → Set default key event value</b>.</span></div>
+            <div class="watch-card"><strong class="wc-lead">There's no separate Key events page.</strong> <span>It's under <b>Admin → Data display → Events</b>.</span></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 17 -->
+      <section class="slide" id="s-17" data-id="17">
+        <header class="slide-head">
+          <p class="eyebrow">EVENTS · PROMPT 2 OF 3</p>
+          <h2 class="title">Count bookings and <span class="ac">sign-ups</span></h2>
+        </header>
+        <div class="slide-body prompt-full">
+            <div class="prompt">
+              <button class="copy-btn" type="button">Copy</button>
+<pre><code>Add two GA4 events using gtag:
+
+1. When <mark class="ph">YOUR BOOKING FORM</mark> passes validation and submits successfully, send:
+   gtag('event', 'generate_lead', { form_name: 'booking', service: &lt;the selected service&gt; })
+
+2. When <mark class="ph">YOUR SIGN-UP FORM</mark> submits successfully, send:
+   gtag('event', 'sign_up', { method: 'newsletter' })
+
+Send each event once per submission, and never when validation fails. Never include the name, email, phone, or ZIP code in any event. Don't change anything else. Tell me which files you changed.</code></pre>
+            </div>
+            <div class="paste-box">
+              <h3 class="box-title">Before you paste: fill in the 2 highlighted blanks</h3>
+              <div class="paste-grid">
+                <div class="dtable compact">
+                  <table>
+                    <thead><tr><th>Blank</th><th>Type…</th><th>Example</th></tr></thead>
+                    <tbody>
+                      <tr><td><mark class="ph">YOUR BOOKING FORM</mark></td><td>Your booking, contact or quote form, and the page it's on</td><td>the booking form on the Book page</td></tr>
+                      <tr><td><mark class="ph">YOUR SIGN-UP FORM</mark></td><td>Your newsletter or account sign-up form, and where it is</td><td>the newsletter sign-up form in the footer</td></tr>
+                    </tbody>
+                  </table>
+                </div>
+                <div class="paste-side">
+                  <h4 class="paste-sub">If your site doesn't have…</h4>
+                  <ul>
+                    <li>a service dropdown: delete "<code>, service: &lt;the selected service&gt;</code>"</li>
+                    <li>a sign-up form: delete step 2</li>
+                  </ul>
+                </div>
+              </div>
+              <p class="paste-foot">Leave everything else as is. Bolt.new fills in <code>&lt;the selected service&gt;</code> for you.</p>
+            </div>
+        </div>
+      </section>
+
+      <!-- 17a -->
+      <section class="slide dense" id="s-17a" data-id="17a">
+        <header class="slide-head">
+          <p class="eyebrow">EVENTS · PROMPT 2 OF 3</p>
+          <h2 class="title">What each part of <span class="ac">the prompt does</span></h2>
+        </header>
+        <div class="slide-body table-full">
+            <div class="dtable">
+              <table>
+                <thead><tr><th>Part of the prompt</th><th>What it does</th><th>Why it matters</th></tr></thead>
+                <tbody>
+                  <tr><td>"submits successfully"</td><td>Names the moment that counts</td><td>Clicks on a broken form don't count as bookings</td></tr>
+                  <tr><td>generate_lead / sign_up</td><td>GA4's recommended names</td><td>GA4's built-in reports and Google Ads recognize them</td></tr>
+                  <tr><td>{ service: … }</td><td>Extra detail sent with the event</td><td>See which service gets booked most</td></tr>
+                  <tr><td>"once per submission, never when validation fails"</td><td>Stops double counts and false bookings</td><td>Your numbers stay honest</td></tr>
+                  <tr><td>"Never include the name, email…"</td><td>Keeps personal details out</td><td>Google's rules forbid personal info in GA4</td></tr>
+                  <tr><td>"Don't change anything else"</td><td>Keeps Bolt.new focused</td><td>No surprise edits</td></tr>
+                </tbody>
+              </table>
+            </div>
+        </div>
+        <p class="callout">Bolt.new sends the event. GA4's key event setting makes it count as a conversion. You need both.</p>
+      </section>
+
+      <!-- 17b -->
+      <section class="slide dense" id="s-17b" data-id="17b">
+        <header class="slide-head">
+          <p class="eyebrow">EVENTS · YOUR OWN SITE</p>
+          <h2 class="title">Write <span class="ac">your own</span> events prompt</h2>
+        </header>
+        <div class="slide-body step1-full">
+          <div class="col">
+            <h3 class="step-h"><span class="step-n">Step 1,</span> match each action to a name</h3>
+            <div class="dtable compact">
+              <table>
+                <thead><tr><th>What the visitor does</th><th>Event name</th><th>Useful detail</th></tr></thead>
+                <tbody>
+                  <tr><td>Books an appointment or service</td><td>generate_lead</td><td>form_name: 'booking', the service</td></tr>
+                  <tr><td>Sends a contact or quote form</td><td>generate_lead</td><td>form_name: 'contact' or 'quote'</td></tr>
+                  <tr><td>Joins a newsletter or waitlist</td><td>sign_up</td><td>method: 'newsletter' or 'waitlist'</td></tr>
+                  <tr><td>Creates an account</td><td>sign_up</td><td>method: 'email' or 'google'</td></tr>
+                  <tr><td>Clicks Buy or Checkout</td><td>begin_checkout</td><td>the product name (not tested in the demo)</td></tr>
+                  <tr><td>Lands on a thank-you page after paying</td><td>purchase</td><td>value and currency (not tested in the demo)</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 17c -->
+      <section class="slide dense" id="s-17c" data-id="17c">
+        <header class="slide-head">
+          <p class="eyebrow">EVENTS · YOUR OWN SITE</p>
+          <h2 class="title">Fill in <span class="ac">the template</span></h2>
+        </header>
+        <div class="slide-body template-watch">
+          <div class="col">
+            <h3 class="step-h"><span class="step-n">Step 2,</span> fill in the template</h3>
+            <div class="prompt">
+              <button class="copy-btn" type="button">Copy</button>
+<pre><code>Add a GA4 event using gtag:
+When <mark class="ph">[the form or button, in plain words, e.g. "the quote form on the Contact page"]</mark> <mark class="ph">[submits successfully / is clicked]</mark>, send:
+gtag('event', '<mark class="ph">[event name from the table]</mark>', { <mark class="ph">[detail]</mark>: <mark class="ph">[value]</mark> })
+
+Send it only after a successful <mark class="ph">[submit / click]</mark>, once each time. Never include names, emails, phone numbers, addresses or other personal details. Don't change anything else. Tell me which file you changed.</code></pre>
+            </div>
+          </div>
+          <div class="watch">
+            <h3 class="box-title">Watch out for:</h3>
+            <ul>
+              <li>Forms from another company (Calendly, Typeform, Jotform): this prompt can't see inside them. Those tools have their own GA4 settings.</li>
+              <li>Payment pages on another site (Stripe payment links): track the click as begin_checkout. Counting purchase needs a thank-you page back on your site.</li>
+              <li>Made-up names like booking_done: they work, but GA4's built-in reports won't recognize them.</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- 17ca -->
+      <section class="slide" id="s-17ca" data-id="17ca">
+        <header class="slide-head">
+          <p class="eyebrow">EVENTS · YOUR OWN SITE</p>
+          <h2 class="title">Fill in <span class="ac">the template</span> <span class="title-part">(continued)</span></h2>
+        </header>
+        <div class="slide-body example-full">
+            <h3 class="step-h">Example: a quote form</h3>
+            <div class="prompt">
+              <button class="copy-btn" type="button">Copy</button>
+<pre><code>Add a GA4 event using gtag:
+When the quote form on the Contact page submits successfully, send:
+gtag('event', 'generate_lead', { form_name: 'quote' })
+
+Send it only after a successful submit, once each time. Never include names, emails, phone numbers, addresses or other personal details. Don't change anything else. Tell me which file you changed.</code></pre>
+            </div>
+            <p class="ph-note">Pick one option where the template says "submits successfully / is clicked" and "submit / click". The event name and detail come from the table on the previous slide.</p>
+            <p class="step-h"><span class="step-n">Step 3:</span> Run the check-it prompt. If you added a new event, mark it as a key event now.</p>
+        </div>
+      </section>
+
+      <!-- 18 -->
+      <section class="slide dense" id="s-18" data-id="18">
+        <header class="slide-head">
+          <p class="eyebrow">CHECK · PROMPT 3 OF 3</p>
+          <h2 class="title">Make Bolt.new <span class="ac">show its work</span></h2>
+        </header>
+        <div class="slide-body shot-cards narrow-shot">
+          <div class="shot-cell"><div class="shot crop" style="--cx:0;--cy:0.56;--cw:0.266;--ch:0.3;--arn:1.3676"><img src="screenshots/S5-01b-check-it-prompt-audit.png" alt="Bolt.new chat panel with the read-only tracking audit and its Confirmations section" loading="lazy">
+              <span class="hl" style="--x:0.61;--y:61.71;--w:25.4;--h:21.42"></span></div></div>
+          <div class="col">
+            <div class="prompt">
+              <button class="copy-btn" type="button">Copy</button>
+<pre><code>Don't change anything. List every place this site sends data to Google Analytics: the Google tag, any page views and any events. Confirm the Google tag appears only once, and confirm no event includes a name, email, phone number or ZIP code.</code></pre>
+            </div>
+            <div class="cards-3">
+              <div class="card"><h3><span class="num">01</span>A read-only audit</h3><p>Bolt.new changes nothing; it lists every tracking point with file and line.</p></div>
+              <div class="card"><h3><span class="num">02</span>One tag</h3><p>Confirms the Google tag appears once.</p></div>
+              <div class="card"><h3><span class="num">03</span>No personal details</h3><p>Confirms no event carries names, emails or phone numbers.</p></div>
+            </div>
+            <p class="callout">Run it after each tracking prompt. No code reading needed.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- 19 -->
+      <section class="slide dense" id="s-19" data-id="19">
+        <header class="slide-head">
+          <p class="eyebrow">VERIFY</p>
+          <h2 class="title">Is it <span class="ac">working?</span></h2>
+        </header>
+        <div class="slide-body shots-table">
+          <div class="shots-stack">
+            <figure class="shot-fig">
+              <div class="shot-cell"><div class="shot crop" style="--cx:0.787;--cy:0.3;--cw:0.18;--ch:0.135;--arn:2.0566"><img src="screenshots/S5-05a-key-events-partial.png" alt="GA4 Realtime Event count card listing generate_lead and sign_up" loading="lazy">
+              <span class="hl" style="--x:78.9;--y:33.6;--w:17.6;--h:8.6"></span></div></div>
+              <figcaption><strong>Realtime:</strong> submit a test booking and sign-up on your live site. Your events appear within a minute in <strong>Event count</strong>.</figcaption>
+            </figure>
+            <figure class="shot-fig">
+              <div class="shot-cell"><div class="shot crop" style="--cx:0.4;--cy:0.27;--cw:0.2;--ch:0.12;--arn:2.5707"><img src="screenshots/S6-04-debugview-generate-lead-key-event-flag.png" alt="GA4 DebugView with a green key event flag next to generate_lead" loading="lazy">
+              <span class="hl" style="--x:42.5;--y:33.3;--w:8;--h:3.1"></span></div></div>
+              <figcaption><strong>DebugView:</strong> the green flag means GA4 counts it as a key event.</figcaption>
+            </figure>
+          </div>
+          <div class="col">
+            <div class="dtable compact">
+              <table>
+                <thead><tr><th>Symptom</th><th>Likely cause</th><th>Fix</th></tr></thead>
+                <tbody>
+                  <tr><td>No visit in Realtime</td><td>Ad blocker or privacy browser</td><td>Pause it for your site, or use a clean Chrome window</td></tr>
+                  <tr><td>No visit in Realtime</td><td>Testing in the Bolt.new preview</td><td>Use your published bolt.host address</td></tr>
+                  <tr><td>No visit in Realtime</td><td>Last change not published</td><td><strong>Publish → Update</strong></td></tr>
+                  <tr><td>Only the first page appears</td><td>Page changes not counted</td><td>Run the check-it prompt, then ask Bolt.new to count page changes</td></tr>
+                  <tr><td>Key events card is empty</td><td>GA4 hasn't started labeling yet</td><td>Normal for 10+ minutes; check Event count instead</td></tr>
+                  <tr><td>Booking counted when the form has errors</td><td>Event sent too early</td><td>Ask Bolt.new to send it only after validation passes</td></tr>
+                </tbody>
+              </table>
+            </div>
+            <p class="callout">GA4 will always show fewer visitors than Bolt.new. That's normal.</p>
+          </div>
+        </div>
+        <aside class="notes"><p>Use test bookings with made-up details.</p></aside>
+      </section>
+
+      <!-- 20 -->
+      <section class="slide dense" id="s-20" data-id="20">
+        <span class="ref-tag">Reference</span>
+        <header class="slide-head">
+          <p class="eyebrow">VERIFY · DEBUGVIEW</p>
+          <h2 class="title">How to read <span class="ac">DebugView</span></h2>
+        </header>
+        <div class="slide-body shot-cards">
+          <div class="col">
+            <div class="shot-cell"><div class="shot crop" style="--cx:0.215;--cy:0.1234;--cw:0.71;--ch:0.56;--arn:1.9556"><img src="screenshots/S6-03c-debugview-after-first-load-fix.png" alt="GA4 DebugView timeline of events" loading="lazy"></div></div>
+            <div class="inset">
+              <div class="shot-cell"><div class="shot crop" style="--cx:0.51;--cy:0.7633;--cw:0.195;--ch:0.07;--arn:4.2967"><img src="screenshots/S6-05-debugview-service-deep-clean.png" alt="DebugView event details showing service = Deep Clean" loading="lazy"></div></div>
+              <p>service = Deep Clean, and no personal details.</p>
+            </div>
+          </div>
+          <div class="cards-col">
+            <div class="card"><h3><span class="num">01</span>Turn it on</h3><p>tagassistant.google.com → <strong>Add domain</strong> → paste your site → <strong>Connect</strong>. Then GA4 → <strong>Admin → DebugView</strong>.</p></div>
+            <div class="card"><h3><span class="num">02</span>Read top down</h3><p>Newest events are at the top. The left column counts events per minute; the gaps show seconds between events.</p></div>
+            <div class="card"><h3><span class="num">03</span>The icons</h3><p>Blue is an event. A green flag is a key event. user_engagement is automatic; ignore it.</p></div>
+            <div class="card"><h3><span class="num">04</span>Click an event</h3><p>See its details. Click ▸ to see a value. The number on the right counts how many times it was sent, not the value.</p></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 21 -->
+      <section class="slide dense" id="s-21" data-id="21">
+        <header class="slide-head">
+          <p class="eyebrow">TAGGED LINKS</p>
+          <h2 class="title">See which posts <span class="ac">bring customers</span></h2>
+        </header>
+        <div class="anatomy">
+          <p class="link"><mark class="ph">YOUR-SITE</mark>.bolt.host/?<span class="u1">utm_source=instagram</span>&amp;<span class="u2">utm_medium=social</span>&amp;<span class="u3">utm_campaign=fall_promo</span></p>
+          <ul>
+            <li><code>utm_source</code> = who sent them (instagram, newsletter, google)</li>
+            <li><code>utm_medium</code> = what kind of channel (social, email, qr)</li>
+            <li><code>utm_campaign</code> = which promotion (fall_promo, nov_email)</li>
+          </ul>
+        </div>
+        <div class="slide-body shot-cards">
+          <div class="col">
+            <figure class="shot-fig">
+              <div class="shot-cell"><div class="shot crop" style="--cx:0.51;--cy:0.6785;--cw:0.195;--ch:0.1696;--arn:1.7734"><img src="screenshots/S7-01-debugview-source-instagram.png" alt="GA4 DebugView event parameters showing source = instagram" loading="lazy">
+              <span class="hl" style="--x:51.5;--y:77.7;--w:18.5;--h:6.3"></span></div></div>
+              <figcaption>Proof in DebugView: the visit carries source = instagram.</figcaption>
+            </figure>
+            <p class="callout">Build links with Google's <strong>Campaign URL Builder</strong> (search "Campaign URL Builder"). Sources show up in <strong>Reports → Acquisition → Traffic acquisition</strong> within 24–48 hours.</p>
+          </div>
+          <div class="cards-col">
+            <div class="card"><h3><span class="num">01</span>You don't give these to Bolt.new</h3><p>Put them where you share your site: posts, emails, QR codes. The Google tag reads them automatically.</p></div>
+            <div class="card"><h3><span class="num">02</span>Test in Incognito</h3><p>GA4 remembers where your browser first came from. A new Incognito window acts like a new visitor.</p></div>
+            <div class="card"><h3><span class="num">03</span>Sites with # links</h3><p>Check your address bar: if page addresses look like /#/book, your site uses # links. Put the tags before the #: <code><mark class="ph">YOUR-SITE</mark>.bolt.host/?<wbr>utm_source=instagram<wbr>#/book</code></p></div>
+          </div>
+        </div>
+        <aside class="notes"><p>Realtime's "First user source" card stayed empty all day in the test build, even though DebugView showed the source. Don't demo that card live.</p></aside>
+      </section>
+
+      <!-- 21b -->
+      <section class="slide dense" id="s-21b" data-id="21b">
+        <header class="slide-head">
+          <p class="eyebrow">TAGGED LINKS · BUILD ONE</p>
+          <h2 class="title">Build a tagged link <span class="ac">in one minute</span></h2>
+        </header>
+        <div class="slide-body builder">
+          <div class="shot-cell"><div class="shot crop" style="--cx:0.14;--cy:0.165;--cw:0.4;--ch:0.75;--arn:0.9496"><img src="screenshots/S7-03-campaign-url-builder.png" alt="Google's Campaign URL Builder with website URL, campaign source, medium and name filled in, and the generated URL" loading="lazy">
+              <span class="hl" style="--x:14.8;--y:21.6;--w:29.4;--h:4.2"></span>
+              <span class="hl" style="--x:14.8;--y:35.4;--w:29.4;--h:4.2"></span>
+              <span class="hl" style="--x:14.8;--y:42.3;--w:29.4;--h:4.2"></span>
+              <span class="hl" style="--x:14.8;--y:49.2;--w:29.4;--h:4.2"></span>
+              <span class="hl" style="--x:16;--y:82.9;--w:36.2;--h:7.6"></span></div></div>
+          <div class="col">
+            <ol class="steps">
+              <li>Go to ga-dev-tools.google/campaign-url-builder (or search "Campaign URL Builder")</li>
+              <li><strong>Website URL</strong>: your published site. Leave <strong>campaign ID</strong>, <strong>campaign term</strong> and <strong>campaign content</strong> blank.</li>
+              <li><strong>Campaign source</strong>: where the link lives (instagram, newsletter, flyer)</li>
+              <li><strong>Campaign medium</strong>: the kind of channel: social, email, or qr for anything printed</li>
+              <li><strong>Campaign name</strong>: the promotion (fall_promo)</li>
+              <li>Copy the link and use it in your post, email or QR code generator</li>
+            </ol>
+            <div class="builder-cards">
+              <div class="card"><h3>Naming rules</h3><p>Lowercase, no spaces, same names every time. "Instagram" and "instagram" show up as two different sources.</p></div>
+              <div class="card"><h3>For QR codes</h3><p>Build the tagged link first, then paste it into any QR code generator. Every scan is credited to that flyer.</p></div>
+            </div>
+          </div>
+        </div>
+        <div class="watch watch-row">
+          <h3 class="box-title">Watch out for:</h3>
+          <ul>
+            <li>Type the promotion into <strong>campaign name</strong>, not <strong>campaign ID</strong> (the box right under the URL). If the generated link doesn't include utm_medium and utm_campaign, check those boxes.</li>
+            <li>Leave "Set campaign parameters in the fragment portion of the URL" unchecked.</li>
+            <li>Don't paste tagged links into Bolt.new's regular chat; it may try to change your site. To have Bolt.new write them, use <strong>Plan mode</strong> (next slide).</li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- 21b2 -->
+      <section class="slide" id="s-21b2" data-id="21b2">
+        <header class="slide-head">
+          <p class="eyebrow">TAGGED LINKS · BUILD ONE</p>
+          <h2 class="title">Or let Bolt.new <span class="ac">write them</span></h2>
+        </header>
+        <div class="slide-body shortcut">
+          <div class="shortcut-box">
+            <h3 class="box-title">Shortcut: let Bolt.new write them</h3>
+            <p class="shortcut-body">Switch the chat to <strong>Plan mode</strong> first, so nothing in your site changes. Then paste:</p>
+            <div class="paste-box slim">
+              <h3 class="box-title">Before you paste</h3>
+              <ul>
+                <li>Replace <mark class="ph">YOUR-SITE</mark> with your site's address (<strong>Bolt.new → Publish</strong> → copy the address)</li>
+                <li>Change the three places to the ones you actually use: an Instagram bio, a Facebook post, an email, a flyer</li>
+              </ul>
+            </div>
+            <div class="prompt">
+              <button class="copy-btn" type="button">Copy</button>
+<pre><code>Don't change any code. Write tagged links (UTM links) for my site, https://<mark class="ph">YOUR-SITE</mark>.bolt.host, for these places:
+- my Instagram bio
+- my November email newsletter
+- a printed flyer with a QR code
+
+Use utm_source, utm_medium and utm_campaign, all lowercase, no spaces. Use these mediums: social for social media, email for emails, qr for anything printed. If my site's links use a #, put the ?utm part before the #. Give me a table with where each link is used and the full link.</code></pre>
+            </div>
+            <p class="shortcut-foot">Test each link once in an Incognito window before you share it.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- 21c -->
+      <section class="slide" id="s-21c" data-id="21c">
+        <span class="ref-tag">Reference</span>
+        <header class="slide-head">
+          <p class="eyebrow">TAGGED LINKS · QR AND PRINT</p>
+          <h2 class="title">Why your flyer shows <span class="ac">as Unassigned</span></h2>
+        </header>
+        <div class="slide-body shot-only">
+          <div class="shot-cell"><div class="shot crop" style="--cx:0.2;--cy:0.4987;--cw:0.68;--ch:0.3918;--arn:3.0901"><img src="screenshots/S7-02-traffic-acquisition-unassigned.png" alt="GA4 Traffic acquisition table with the Unassigned channel showing 3.00 key events" loading="lazy">
+              <span class="hl" style="--x:20.5;--y:81;--w:60.5;--h:4.1"></span>
+              <span class="hl" style="--x:81.5;--y:81;--w:6.2;--h:4.1"></span></div></div>
+          <div class="cards-3 equal qr-cards">
+            <div class="card"><h3><span class="num">01</span>What happened</h3><p>GA4 doesn't recognize "qr" as a channel, so channel reports call it Unassigned. Here, it brought the most bookings.</p></div>
+            <div class="card"><h3><span class="num">02</span>The quick fix</h3><p>In <strong>Traffic acquisition</strong>, switch the first column to <strong>Session source / medium</strong>. You'll see it as "flyer / qr."</p></div>
+            <div class="card"><h3><span class="num">03</span>Optional</h3><p><strong>Admin → Data display → Channel groups</strong> lets you create an "Offline" channel for qr and print. About five minutes.</p></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 22 -->
+      <section class="slide" id="s-22" data-id="22">
+        <header class="slide-head">
+          <p class="eyebrow">EVERY MONDAY</p>
+          <h2 class="title">The five numbers <span class="ac">worth checking</span></h2>
+        </header>
+        <div class="slide-body table-center">
+          <div class="dtable large">
+            <table>
+              <thead><tr><th>Number</th><th>What it tells you</th><th>Where in GA4</th></tr></thead>
+              <tbody>
+                <tr><td>Visitors (Users)</td><td>Is anyone finding the site?</td><td>Traffic acquisition</td></tr>
+                <tr><td>Bookings (generate_lead)</td><td>How many leads came in</td><td>Key events column</td></tr>
+                <tr><td>Booking rate</td><td>Share of visits that booked</td><td>Session key event rate</td></tr>
+                <tr><td>Bookings by channel</td><td>Which posts and ads bring customers</td><td>Session source/medium rows</td></tr>
+                <tr><td>Sign-ups (sign_up)</td><td>Growth of the list you can market to</td><td>Key events column</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <p class="strip strip-muted"><strong>Skip for now:</strong> bounce rate, average engagement time, total page views and demographics. With small-business traffic they're noisy and rarely change a decision.</p>
+      </section>
+
+      <!-- 23 -->
+      <section class="slide dense" id="s-23" data-id="23">
+        <header class="slide-head">
+          <p class="eyebrow">EVERY MONDAY</p>
+          <h2 class="title">Your <span class="ac">Monday-morning check</span></h2>
+        </header>
+        <div class="slide-body monday">
+          <div class="shot-cell main"><div class="shot crop" data-label="Traffic acquisition screenshot" style="--cx:0.2;--cy:0.565;--cw:0.67;--ch:0.31;--arn:3.848"><img src="screenshots/S8-01-traffic-acquisition-weekly.png" alt="GA4 Traffic acquisition report by session source / medium, last 7 days, with generate_lead in the Key events column" loading="lazy">
+              <span class="hl" style="--x:24.4;--y:57.4;--w:11.6;--h:3.4"></span>
+              <span class="hl" style="--x:78.6;--y:57.4;--w:7.8;--h:5.2"></span></div></div>
+          <div class="monday-row">
+            <ol class="steps">
+              <li><strong>Reports → Acquisition → Traffic acquisition</strong></li>
+              <li>Click the first column's dropdown (<strong>Session primary channel group</strong>) and choose <strong>Session source / medium</strong></li>
+              <li>In the <strong>Key events</strong> column, change <strong>All events</strong> to generate_lead</li>
+              <li>Date range: <strong>Last 7 days</strong>, with <strong>Compare to the previous period</strong></li>
+              <li>Bookmark the page</li>
+            </ol>
+            <div class="inset">
+              <div class="shot-cell"><div class="shot crop" style="--cx:0.2;--cy:0.515;--cw:0.41;--ch:0.165;--arn:4.4239"><img src="screenshots/S8-02-demo-account-traffic-acquisition.png" alt="Traffic acquisition report in Google's GA4 demo account" loading="lazy"></div></div>
+              <p>The same report on a site with lots of data: Google's free GA4 demo account (Google Merchandise Store).</p>
+            </div>
+            <p class="callout">Regular reports fill in 24–48 hours after visits. Realtime is for checking your setup, not your weekly numbers.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- 24 -->
+      <section class="slide layout-cards" id="s-24" data-id="24">
+        <header class="slide-head">
+          <p class="eyebrow">PRIVACY · NOT LEGAL ADVICE</p>
+          <h2 class="title">Privacy <span class="ac">in three points</span></h2>
+        </header>
+        <div class="slide-body layout-cards">
+          <div class="cards-3 tall equal">
+            <div class="card"><h3><span class="num">01</span>Never send personal details</h3><p>Google's rules prohibit names, emails and phone numbers in GA4. The events prompt already leaves them out.</p></div>
+            <div class="card"><h3><span class="num">02</span>Say you use analytics</h3><p>Add a line to your privacy policy that your site uses Google Analytics and cookies.</p></div>
+            <div class="card"><h3><span class="num">03</span>Consent depends on where visitors live</h3><p>Visitors in the EU, the UK and some US states have stronger rights over tracking. If you serve those areas, look into a cookie banner and Google's Consent Mode, or ask a professional.</p></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 25 -->
+      <section class="slide" id="s-25" data-id="25">
+        <header class="slide-head">
+          <p class="eyebrow">FAQ</p>
+          <h2 class="title">Questions people <span class="ac">often ask</span> <span class="title-part">(1 of 2)</span></h2>
+        </header>
+        <ul class="slide-body faq">
+          <li><h3>Why does GA4 show fewer visitors than Bolt.new?</h3><p>Ad blockers hide some visitors from GA4, and Bolt.new also counts bots.</p></li>
+          <li><h3>How long until I see data?</h3><p>Realtime shows visits within seconds. Regular reports take 24–48 hours.</p></li>
+          <li><h3>Can I track Stripe payments?</h3><p>Possibly, if your payment page sends buyers back to a thank-you page on your site. We didn't test that today.</p></li>
+          <li><h3>Do I need a cookie banner?</h3><p>It depends where your visitors live. See the privacy slide.</p></li>
+          <li><h3>Can I see who exactly visited?</h3><p>No. GA4 shows patterns, not people, and you shouldn't send names or emails to it.</p></li>
+        </ul>
+      </section>
+
+      <!-- 25b -->
+      <section class="slide" id="s-25b" data-id="25b">
+        <header class="slide-head">
+          <p class="eyebrow">FAQ</p>
+          <h2 class="title">Questions people <span class="ac">often ask</span> <span class="title-part">(2 of 2)</span></h2>
+        </header>
+        <ul class="slide-body faq">
+          <li><h3>Where did my visits go?</h3><p>Realtime only shows the last 30 minutes. Older visits move to your regular reports.</p></li>
+          <li><h3>My reports say 0. Is it broken?</h3><p>New properties take 24–48 hours to fill in. Check Realtime to confirm tracking works.</p></li>
+          <li><h3>Why is my QR code traffic "Unassigned"?</h3><p>GA4 doesn't recognize custom mediums like "qr" as a channel. In <strong>Traffic acquisition</strong>, switch to <strong>Session source/medium</strong> to see it as "flyer / qr".</p></li>
+        </ul>
+      </section>
+
+
+      <!-- 26 -->
+      <section class="slide layout-cards" id="s-26" data-id="26">
+        <header class="slide-head">
+          <p class="eyebrow">NEXT STEPS</p>
+          <h2 class="title">Thank <span class="ac">You</span></h2>
+        </header>
+        <div class="slide-body layout-cards">
+          <div class="cards-3 tall equal link-cards">
+            <a class="card link-card" href="https://luma.com/bolt-e3ba" target="_blank" rel="noopener"><h3><span class="num">01</span>Next workshop</h3><p>Nov 12: Will anyone pay for your product? Find out before you build. Save your spot.</p><span class="link-url">luma.com/bolt-e3ba ↗</span></a>
+            <a class="card link-card" href="https://youtube.com/@BoltDotNew" target="_blank" rel="noopener"><h3><span class="num">02</span>Watch the recording</h3><p>Rewatch today's session, step by step.</p><span class="link-url">youtube.com/@BoltDotNew ↗</span></a>
+            <a class="card link-card" href="https://luma.com/bolt-training" target="_blank" rel="noopener"><h3><span class="num">03</span>All workshops</h3><p>See every upcoming Bolt.new training session.</p><span class="link-url">luma.com/bolt-training ↗</span></a>
+          </div>
+        </div>
+        <aside class="notes"><p>Mention the next workshop: Thu, Nov 12, 10:30–11:30 am PT, "Will anyone pay for your product? Find out before you build."</p></aside>
+      </section>
+
+    </div>
+  </main>
+
+  <nav class="dock" aria-label="Slide navigation">
+    <button class="dock-btn" id="prev" type="button" aria-label="Previous slide" title="Previous">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M15 5l-7 7 7 7"/></svg>
+    </button>
+    <div class="dock-counter" aria-live="polite"><span id="count-now">1</span><span class="dock-tot">/ <span id="count-tot">1</span></span></div>
+    <button class="dock-btn" id="next" type="button" aria-label="Next slide" title="Next">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5l7 7-7 7"/></svg>
+    </button>
+    <span class="dock-sep"></span>
+    <button class="dock-btn" id="fullscreen" type="button" aria-label="Toggle fullscreen" title="Fullscreen">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 9V4h5M20 9V4h-5M4 15v5h5M20 15v5h-5"/></svg>
+    </button>
+  </nav>
+
+  <aside class="notes-panel" id="notes-panel" aria-label="Presenter notes" hidden>
+    <div class="notes-head"><span>Notes · <span id="notes-id"></span></span><span class="notes-hint">Press N to close</span></div>
+    <div class="notes-body" id="notes-body"></div>
+  </aside>
+
+  <script src="deck.js"></script>
+</body>
+</html>
